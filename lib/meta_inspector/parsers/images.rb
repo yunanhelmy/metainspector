@@ -69,7 +69,10 @@ module MetaInspector
 
       # Return favicon url if exist
       def favicon
-        query = '//link[@rel="apple-touch-icon" or @rel="apple-touch-icon-precomposed" or @rel="icon" or contains(@rel, "shortcut")]'
+        query = '//link[@rel="apple-touch-icon" or @rel="apple-touch-icon-precomposed"]'
+        if parsed.xpath(query).size == 0
+          query = '//link[@rel="icon" or contains(@rel, "shortcut")]'
+        end
         value = parsed.xpath(query)[0].attributes['href'].value
         @favicon ||= URL.absolutify(value, base_url)
       rescue
