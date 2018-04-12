@@ -96,7 +96,7 @@ module MetaInspector
     end
 
     def default_user_agent
-      "MetaInspector/#{MetaInspector::VERSION} (+https://github.com/jaimeiniesta/metainspector)"
+      "MetaInspector/#{MetaInspector::VERSION}"
     end
 
     def document
